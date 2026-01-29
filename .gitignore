@@ -1,0 +1,40 @@
+# PowerShell generated files
+*.psd1.temp
+*.psd1.restore
+*.cache
+*.build.csdef
+*.build.csx
+*.TempPoint.*
+*.RestorePoint.*
+
+# Dependency folders
+Modules/
+**/packages/
+**/temp/
+**/tmp/
+
+# Compiled binaries and outputs
+*.dll
+*.exe
+*.nupkg
+*.tgz
+
+# Visual Studio / VS Code files
+.vscode/
+*.suo
+*.user
+*.log
+*.lock.json
+bin/
+obj/
+
+# Environment files
+.env
+.env.local
+
+# MSBuild logs
+msbuild.binlog
+
+# NuGet configuration (if dynamically generated)
+nuget.config
+
