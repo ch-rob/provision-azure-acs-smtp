@@ -68,6 +68,17 @@ The provisioning script creates the following Azure resources:
 - **SMTP Usernames**: Registered authentication credentials for both legacy and modern clients
 - **Sender Addresses**: Registered MailFrom addresses
 
+### Custom Domain Considerations
+
+**By default**, the provisioning script creates an **Azure-managed domain** (`*.azurecomm.net`) which is ready to use immediately.
+
+**For custom domains** (e.g., `@yourdomain.com`):
+- Use the `-UseCustomerManagedDomain` and `-CustomDomainName` parameters
+- **Additional DNS configuration is required** - you must manually add DNS TXT/CNAME records for domain verification
+- The provisioning script will output the required DNS records, but you must add them to your DNS provider
+- Email rate limits can be increased for verified custom domains
+- See: [Add custom verified domains to Email Communication Service](https://learn.microsoft.com/en-us/azure/communication-services/quickstarts/email/add-custom-verified-domains?pivots=platform-azp)
+
 ## Quick Start
 
 ### 1. Provision Azure Resources
