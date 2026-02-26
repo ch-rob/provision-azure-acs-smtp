@@ -18,7 +18,7 @@ The script uses MailKit/MimeKit for SMTP OAuth2 support. Reference: https://lear
     Install-Package -Name 'MimeKit' -Source "https://www.nuget.org/api/v2" -SkipDependencies -Scope CurrentUser
     Install-Package -Name 'MailKit' -Source "https://www.nuget.org/api/v2" -SkipDependencies -Scope CurrentUser
 
-# Running locally (uses your current Azure login)
+# Running locally (uses your current Azure login (Connect-AzAccount -UseDeviceAuthentication) )
 ./send-email-smtp-passwordless.ps1 `
     -SmtpUsername "modern-client@xyz.azurecomm.net" `
     -Sender "modern-client@xyz.azurecomm.net" `
@@ -38,9 +38,12 @@ The script uses MailKit/MimeKit for SMTP OAuth2 support. Reference: https://lear
 #       $secret = Read-Host "Enter Azure AD Client Secret" -AsSecureString
 #   Or set a variable...
 #       $secret = (ConvertTo-SecureString "YourSecretValue" -AsPlainText -Force)
-#   Or from KV (AND change to pass in $secret.SecretValue):
-#       $secret = Get-AzKeyVaultSecret -VaultName "kv-acs-smtp-poc" -Name "smtp-modern-client-secret"
+#   Or from Key Vault:
+#       $secret = (Get-AzKeyVaultSecret -VaultName "kv-acs-smtp-poc" -Name "smtp-modern-client-secret").SecretValue
 
+# To see the plain text string...
+#       $secret |  ConvertFrom-SecureString -AsPlainText
+ 
 ./send-email-smtp-passwordless.ps1 `
     -SmtpUsername "modern-client@xyz.azurecomm.net" `
     -Sender "modern-client@xyz.azurecomm.net" `
